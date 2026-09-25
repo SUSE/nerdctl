@@ -71,13 +71,13 @@ type btfHeader struct {
 // typeStart returns the offset from the beginning of the .BTF section
 // to the start of its type entries.
 func (h *btfHeader) typeStart() int64 {
-	return int64(h.HdrLen + h.TypeOff)
+	return int64(uint64(h.HdrLen) + uint64(h.TypeOff))
 }
 
 // stringStart returns the offset from the beginning of the .BTF section
 // to the start of its string table.
 func (h *btfHeader) stringStart() int64 {
-	return int64(h.HdrLen + h.StringOff)
+	return int64(uint64(h.HdrLen) + uint64(h.StringOff))
 }
 
 // newSpec creates a Spec containing only Void.
